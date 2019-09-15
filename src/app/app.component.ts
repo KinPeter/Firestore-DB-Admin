@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { SpinnerService } from './spinner.service';
 
 @Component({
     selector: 'app-root',
@@ -10,12 +11,17 @@ export class AppComponent implements OnInit {
 
     // isLoggedIn: boolean;
     isLoggedIn = true;
+    loading = false;
 
     constructor(
-        private auth: AuthService
+        private auth: AuthService,
+        private spinner: SpinnerService
     ) {}
 
     ngOnInit() {
+        this.spinner.loading.subscribe((status) => {
+            this.loading = status;
+        });
         this.auth.initAuthListener();
         // this.auth.authChange.subscribe((status) => {
         //     this.isLoggedIn = status;

@@ -15,3 +15,9 @@
         top: -2px;
     }
 }
+mat-spinner {
+    position: fixed;
+    top: 72px;
+    left: calc(50vw - 20px);
+    z-index: 100;
+}

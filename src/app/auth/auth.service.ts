@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { SpinnerService } from '../spinner.service';
+import { SnackbarService } from '../snackbar.service';
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +15,9 @@ export class AuthService {
 
     constructor(
         private auth: AngularFireAuth,
-        private router: Router
+        private router: Router,
+        private spinner: SpinnerService,
+        private snackbar: SnackbarService
     ) { }
 
     initAuthListener() {
@@ -35,16 +39,20 @@ export class AuthService {
     }
 
     async login(email: string, password: string) {
+        this.spinner.show();
         try {
-            const resp = await this.auth.auth.signInWithEmailAndPassword(email, password);
+            await this.auth.auth.signInWithEmailAndPassword(email, password);
+            this.snackbar.show('Login successful!');
         } catch (error) {
             console.log(error);
+            this.snackbar.error(error.message);
         } finally {
-            // loading false
+            this.spinner.hide();
         }
     }
 
     logout() {
+        this.snackbar.show('Logged out.');
         this.auth.auth.signOut();
     }
 }

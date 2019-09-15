@@ -8,4 +8,9 @@
         </ul>
     </div>
 </mat-toolbar>
+<mat-spinner 
+    *ngIf="loading" 
+    color="accent" 
+    diameter="40">
+</mat-spinner>
 <router-outlet></router-outlet>

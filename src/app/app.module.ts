@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
     declarations: [
         AppComponent,
-        AuthComponent
+        AuthComponent,
     ],
     imports: [
         BrowserModule,
