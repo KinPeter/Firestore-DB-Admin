@@ -8,10 +8,15 @@ import { TilesRoutingModule } from './tiles-routing.module';
 import { TilesService } from './tiles.service';
 import { TileFormComponent } from './tile-form/tile-form.component';
 import { FormsModule } from '@angular/forms';
+import { DeleteTileDialogComponent } from './delete-tile-dialog.component';
 
 
 @NgModule({
-    declarations: [TilesComponent, TileFormComponent],
+    declarations: [
+        TilesComponent,
+        TileFormComponent,
+        DeleteTileDialogComponent
+    ],
     imports: [
         CommonModule,
         FormsModule,
@@ -20,6 +25,7 @@ import { FormsModule } from '@angular/forms';
         MaterialModule,
         AngularFirestoreModule
     ],
-    providers: [TilesService]
+    providers: [TilesService],
+    entryComponents: [TileFormComponent, DeleteTileDialogComponent]
 })
 export class TilesModule { }

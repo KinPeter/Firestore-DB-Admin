@@ -37,4 +37,38 @@ export class TilesService {
             this.tiles.error(new Error(error));
         });
     }
+
+    async updateTile(id: string, tile: Tile) {
+        try {
+            await this.tilesCollection.doc(id).set(tile);
+            this.fetchTiles(tile.category);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            // ...
+        }
+
+    }
+
+    async addNewTile(tile: Tile) {
+        try {
+            await this.tilesCollection.add(tile);
+            this.fetchTiles(tile.category);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            // ...
+        }
+    }
+
+    async deleteTile(id: string, category: string) {
+        try {
+            await this.tilesCollection.doc(id).delete();
+            this.fetchTiles(category);
+        } catch (error) {
+            console.log(error);
+        } finally {
+            // ...
+        }
+    }
 }

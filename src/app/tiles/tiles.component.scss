@@ -16,3 +16,14 @@ ul {
         }
     }
 }
+button[mat-fab] {
+    position: absolute;
+    right: 1rem;
+    mat-icon {
+        color: white;
+        position: relative;
+        top: -5px;
+        left: -5px;
+        font-size: 36px;
+    }
+}

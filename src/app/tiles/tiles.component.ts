@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { TilesService } from './tiles.service';
 import { Tile } from '../interfaces';
-import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatSort, MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs';
+import { TileFormComponent } from './tile-form/tile-form.component';
+import { DeleteTileDialogComponent } from './delete-tile-dialog.component';
 
 @Component({
     selector: 'app-tiles',
@@ -17,7 +19,8 @@ export class TilesComponent implements OnInit, AfterViewInit, OnDestroy {
     tilesSub: Subscription;
 
     constructor(
-        private ts: TilesService
+        private ts: TilesService,
+        public dialog: MatDialog
     ) { }
 
     ngOnInit() {
@@ -39,8 +42,22 @@ export class TilesComponent implements OnInit, AfterViewInit, OnDestroy {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
 
-    onEdit(element) {
-        console.log(element);
+    onEdit(element: Tile) {
+        this.dialog.open(TileFormComponent, {
+            width: '500px',
+            data: element
+        });
+    }
+
+    onDelete(element: Tile) {
+        this.dialog.open(DeleteTileDialogComponent, {data: element});
+    }
+
+    onAddNew() {
+        this.dialog.open(TileFormComponent, {
+            width: '500px',
+            data: null
+        });
     }
 
     ngOnDestroy() {
