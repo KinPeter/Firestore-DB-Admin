@@ -37,7 +37,6 @@ export class AuthService {
     async login(email: string, password: string) {
         try {
             const resp = await this.auth.auth.signInWithEmailAndPassword(email, password);
-            console.log(resp);
         } catch (error) {
             console.log(error);
         } finally {
