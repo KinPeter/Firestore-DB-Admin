@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-auth',
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss']
+    selector: 'app-auth',
+    templateUrl: './auth.component.html',
+    styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+    private authSub: Subscription;
+    // isLoggedIn: boolean;
+    isLoggedIn = true;
 
-  ngOnInit() {
-  }
+    constructor(
+        private auth: AuthService
+    ) { }
+
+    ngOnInit() {
+        // this.authSub = this.auth.authChange.subscribe((status) => {
+        //     this.isLoggedIn = status;
+        // });
+    }
+
+    onSubmit(form: NgForm) {
+        this.auth.login(form.value.email, form.value.password);
+    }
+
+    ngOnDestroy() {
+        // this.authSub.unsubscribe();
+    }
 
 }

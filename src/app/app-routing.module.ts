@@ -9,12 +9,14 @@ const routes: Routes = [
     {
         path: 'tiles',
         loadChildren: './tiles/tiles.module#TilesModule',
-        canLoad: [AuthGuard]
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard]
     },
     {
         path: 'links',
         loadChildren: './links/links.module#LinksModule',
-        canLoad: [AuthGuard]
+        canLoad: [AuthGuard],
+        canActivate: [AuthGuard]
     }
 ];
 

@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { MaterialModule } from './material.module';
 import { AuthComponent } from './auth/auth.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { AuthComponent } from './auth/auth.component';
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
+        FormsModule,
         FlexLayoutModule,
         MaterialModule,
         AppRoutingModule,
