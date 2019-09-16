@@ -15,7 +15,7 @@ export class LinkFormComponent implements OnInit, AfterViewInit {
     @ViewChild('form', { static: true }) form: NgForm;
 
     constructor(
-        private ls: LinksService,
+        public ls: LinksService,
         public dialogRef: MatDialogRef<LinkFormComponent>,
         @Inject(MAT_DIALOG_DATA) public data: Link
     ) { }
