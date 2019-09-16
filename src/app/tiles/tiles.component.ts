@@ -19,7 +19,7 @@ export class TilesComponent implements OnInit, AfterViewInit, OnDestroy {
     tilesSub: Subscription;
 
     constructor(
-        private ts: TilesService,
+        public ts: TilesService,
         public dialog: MatDialog
     ) { }
 
