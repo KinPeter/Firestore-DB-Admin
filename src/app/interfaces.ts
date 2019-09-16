@@ -5,10 +5,7 @@ export interface Link {
     tags: string[];
 }
 
-export interface Tag {
-    tag: string;
-    name: string;
-}
+export type Tag = [string, string];
 
 export interface Tile {
     id?: string;
