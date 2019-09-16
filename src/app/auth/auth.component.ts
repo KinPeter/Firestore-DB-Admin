@@ -11,17 +11,16 @@ import { Subscription } from 'rxjs';
 export class AuthComponent implements OnInit, OnDestroy {
 
     private authSub: Subscription;
-    // isLoggedIn: boolean;
-    isLoggedIn = true;
+    isLoggedIn: boolean;
 
     constructor(
         private auth: AuthService
     ) { }
 
     ngOnInit() {
-        // this.authSub = this.auth.authChange.subscribe((status) => {
-        //     this.isLoggedIn = status;
-        // });
+        this.authSub = this.auth.authChange.subscribe((status) => {
+            this.isLoggedIn = status;
+        });
     }
 
     onSubmit(form: NgForm) {

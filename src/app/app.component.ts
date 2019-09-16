@@ -9,8 +9,7 @@ import { SpinnerService } from './spinner.service';
 })
 export class AppComponent implements OnInit {
 
-    // isLoggedIn: boolean;
-    isLoggedIn = true;
+    isLoggedIn: boolean;
     loading = false;
 
     constructor(
@@ -23,9 +22,9 @@ export class AppComponent implements OnInit {
             this.loading = status;
         });
         this.auth.initAuthListener();
-        // this.auth.authChange.subscribe((status) => {
-        //     this.isLoggedIn = status;
-        // });
+        this.auth.authChange.subscribe((status) => {
+            this.isLoggedIn = status;
+        });
     }
 
     logout() {

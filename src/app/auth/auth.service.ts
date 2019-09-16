@@ -34,8 +34,7 @@ export class AuthService {
     }
 
     isLoggedIn(): boolean {
-        // return this.isAuthenticated;
-        return true;
+        return this.isAuthenticated;
     }
 
     async login(email: string, password: string) {
