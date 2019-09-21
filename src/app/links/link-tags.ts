@@ -11,6 +11,7 @@ export const tagList: Tag[] = [
     ['html', 'HTML'],
     ['javascript', 'JavaScript'],
     ['linux', 'Linux'],
+    ['node', 'Node.js'],
     ['onlinecourses', 'Online courses'],
     ['onlinetools', 'Online tools'],
     ['package', 'Package'],
@@ -23,5 +24,5 @@ export const tagList: Tag[] = [
     ['tools', 'Tools'],
     ['tutorials', 'Tutorials'],
     ['typescript', 'TypeScript'],
-    ['vue', 'Vue']
+    ['vue', 'Vue.js']
 ];
